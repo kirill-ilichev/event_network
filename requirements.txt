@@ -1,0 +1,17 @@
+certifi==2019.6.16
+dj-database-url==0.5.0
+Django==2.2.3
+django-environ==0.4.5
+django-heroku==0.3.1
+djangorestframework==3.10.1
+djangorestframework-jwt==1.11.0
+gunicorn==19.9.0
+pipenv==2018.11.26
+psycopg2==2.8.3
+PyJWT==1.7.1
+python-decouple==3.1
+pytz==2019.1
+sqlparse==0.3.0
+virtualenv==16.6.2
+virtualenv-clone==0.5.3
+whitenoise==4.1.3
