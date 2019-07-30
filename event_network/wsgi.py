@@ -8,12 +8,11 @@ https://docs.djangoproject.com/en/2.2/howto/deployment/wsgi/
 """
 
 import os
+from whitenoise import WhiteNoise
+from django.core.wsgi import get_wsgi_application
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'event_network.settings')
 
-from django.core.wsgi import get_wsgi_application
 
 application = get_wsgi_application()
-
-# from whitenoise import WhiteNoise
-# application = WhiteNoise(application)
+application = WhiteNoise(application)
