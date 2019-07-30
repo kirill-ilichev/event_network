@@ -15,14 +15,14 @@ class CommentViewSet(viewsets.ModelViewSet):
 
     def create(self, request):
         try:
-            comment_model = Comment.objects.get(id=request.data['reply'])
+            comment_model = Comment.objects.get(id=request.data['reply_to'])
             if not comment_model.is_tread:
                 serializer = CommentSerializer(data={
                     'text': request.data['text'],
                     'author': request.user.id,
                     'is_tread': True,
                     'event': comment_model.event.id,
-                    'reply': comment_model.id
+                    'reply_to': comment_model.id
                 })
             else:
                 return Response('You can\'t reply the reply', status=status.HTTP_403_FORBIDDEN)

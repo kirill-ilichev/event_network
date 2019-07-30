@@ -3,7 +3,6 @@ from rest_framework import viewsets
 from rest_framework.response import Response
 
 from myapp.models.UserModel import User
-# from myapp.models import User
 from myapp.serializers import FriendslistSerializer
 
 
