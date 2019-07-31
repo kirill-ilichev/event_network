@@ -50,4 +50,3 @@ class CommentViewSet(viewsets.ModelViewSet):
             queryset = Comment.objects.filter(event=event)
 
         return queryset
-

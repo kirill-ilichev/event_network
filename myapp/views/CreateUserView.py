@@ -1,9 +1,11 @@
 from django.conf import settings
-from myapp.serializers import UserSerializer
-from rest_framework import status
-from myapp.models.UserModel import User
-# from myapp.models import User
+
 import jwt
+
+from myapp.serializers import UserSerializer
+from myapp.models.UserModel import User
+
+from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import AllowAny

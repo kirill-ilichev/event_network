@@ -14,7 +14,9 @@ class FriendshipAcceptView(APIView):
     def post(self, request, pk):
         if not Friendship.objects.filter(id=pk, request_target=request.user.id).exists():
             return Response(status=status.HTTP_404_NOT_FOUND)
+
         friendship_model = Friendship.objects.get(id=pk)
+
         if request.data["accept"]:
             friendship_addresser_id = friendship_model.request_owner
             user_model = User.objects.get(id=request.user.id)

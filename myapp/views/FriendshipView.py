@@ -15,6 +15,7 @@ class FriendshipViewSet(viewsets.ViewSet):
     permission_classes = (IsAuthenticated,)
 
     def list(self, request):
+
         queryset = Friendship.objects.filter(Q(request_owner=request.user.id) |
                                              Q(request_target=request.user.id))
 

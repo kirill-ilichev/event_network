@@ -7,9 +7,8 @@ from myapp.serializers import FriendslistSerializer
 
 
 class FriendslistViewSet(viewsets.ViewSet):
-
+    permission_classes = (IsAuthenticated,)
     def list(self, request):
-        permission_classes = (IsAuthenticated,)
 
         queryset = User.objects.filter(friends__id=request.user.id)
         serializer = FriendslistSerializer(queryset, many=True)

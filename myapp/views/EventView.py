@@ -14,8 +14,9 @@ class EventViewSet(viewsets.ModelViewSet):
     serializer_class = EventSerializer
     permission_classes = (IsAuthenticated,)
 
-    def list(self, request):                        # making str because cant capitalize None object
-        if not request.query_params.get('mine') or str(request.query_params.get('mine')).capitalize() != 'True':
+    def list(self, request):
+        is_mine = request.query_params.get('is_mine')
+        if not is_mine or is_mine != "true":
             queryset = Event.objects.all()
         else:
             queryset = Event.objects.filter(author=self.request.user.id)
@@ -40,10 +41,9 @@ class EventViewSet(viewsets.ModelViewSet):
         serializer.is_valid(raise_exception=True)
         serializer.save()
 
-        return Response("Event successfully created", status=status.HTTP_201_CREATED)
+        return Response(status=status.HTTP_201_CREATED)
 
     def get_permissions(self):
         if self.action in ['update', 'partial_update', 'destroy']:
             self.permission_classes = (IsAuthenticated, IsOwnerOrReadOnly)
         return super(EventViewSet, self).get_permissions()
-
